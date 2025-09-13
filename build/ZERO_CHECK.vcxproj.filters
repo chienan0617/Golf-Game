@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jimmy\Desktop\sdl-project\golf\build\CMakeFiles\bbd1989298d227d6640db7cf7cc7f0db\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E19811DA-F503-3E89-89E9-0FF96CB97915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

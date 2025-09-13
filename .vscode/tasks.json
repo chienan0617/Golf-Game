@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build SDL3",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "g++ (Get-ChildItem -Recurse -Include *.cpp src | ForEach-Object { $_.FullName }) -o build/main.exe -I D:/Jimmy/sdl3/x86_64-w64-mingw32/include -L D:/Jimmy/sdl3/x86_64-w64-mingw32/lib -lSDL3 -std=c++17"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

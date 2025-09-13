@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run SDL3",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/main.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "preLaunchTask": "build SDL3",
+      "MIMode": "gdb",
+      "miDebuggerPath": "D:/Jimmy/msys64/ucrt64/bin/gdb.exe"
+    }
+  ]
+}
