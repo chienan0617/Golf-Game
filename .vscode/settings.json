@@ -2,7 +2,21 @@
   "files.associations": {
     "iostream": "cpp",
     "cstdlib": "cpp",
-    "new": "cpp"
+    "new": "cpp",
+    "vector": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "string_view": "cpp",
+    "format": "cpp",
+    "initializer_list": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "text_encoding": "cpp",
+    "atomic": "cpp",
+    "algorithm": "cpp",
+    "stdfloat": "cpp"
   },
   "cSpell.words": [
     "SDLCALL"

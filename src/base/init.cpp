@@ -27,4 +27,17 @@ namespace Init {
       System::onError(SDL_GetError());
     }
   }
+
+  void initDisplayMode() {
+    State::primaryDisplayID = SDL_GetPrimaryDisplay();
+
+    if (State::primaryDisplayID) {
+      const SDL_DisplayMode* mode = SDL_GetDesktopDisplayMode(State::primaryDisplayID);
+
+      if (mode) {
+        *(State::primaryDisplayMode) = *mode;
+      }
+    }
+    System::onError("Haaaaaaaa");
+  }
 }

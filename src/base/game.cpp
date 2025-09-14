@@ -4,6 +4,8 @@
 #include "state.hpp"
 #include "system.hpp"
 #include "event.hpp"
+#include "object/object_manager.hpp"
+#include "model/canvas.hpp"
 
 void Game::run() {
   Game::init();
@@ -15,6 +17,8 @@ void Game::init() {
   Init::initSDL();
   Init::createWindow("Test", 640, 480);
   Init::createRenderer();
+  // Init::initDisplayMode(); // ! fatal function!!!
+  ObjectManager::onCreate();
 }
 
 void Game::loop() {
@@ -22,6 +26,13 @@ void Game::loop() {
     while(Event::pollEvent(event)) {
       Event::detectQuit(event);
     }
+
+    Canvas::renderClear();
+    ObjectManager::onUpdate();
+    ObjectManager::onRender();
+    Canvas::renderPresent();
+
+    System::delay(8);
   }
 }
 
