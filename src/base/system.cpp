@@ -10,6 +10,10 @@ namespace System {
     SDL_DestroyWindow(State::window);
   }
 
+  void destroyRenderer() {
+    SDL_DestroyRenderer(State::renderer);
+  }
+
   void quit() {
     State::running = false;
     SDL_Quit();

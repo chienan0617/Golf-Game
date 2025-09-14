@@ -3,3 +3,9 @@
 
 build/
 out/
+
+android/build
+android/app/build
+android/app/jni/SDL
+android/app/jniLibs
+android/app/obj
