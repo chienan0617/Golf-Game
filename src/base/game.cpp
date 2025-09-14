@@ -22,7 +22,7 @@ void Game::init() {
 }
 
 void Game::loop() {
-  while (State::running) {
+  while (state.running) {
     while(Event::pollEvent(event)) {
       Event::detectQuit(event);
     }

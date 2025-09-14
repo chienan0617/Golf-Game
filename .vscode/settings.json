@@ -16,7 +16,8 @@
     "text_encoding": "cpp",
     "atomic": "cpp",
     "algorithm": "cpp",
-    "stdfloat": "cpp"
+    "stdfloat": "cpp",
+    "optional": "cpp"
   },
   "cSpell.words": [
     "SDLCALL"

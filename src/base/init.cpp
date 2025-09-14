@@ -13,31 +13,31 @@ namespace Init {
   }
 
   void createWindow(const char* title, int w, int h) {
-    State::window = SDL_CreateWindow(title, w, h, 0);
+    state.window = SDL_CreateWindow(title, w, h, 0);
 
-    if (!State::window) {
+    if (!state.window) {
       System::onError("error when create a window");
     }
   }
 
   void createRenderer() {
-    State::renderer = SDL_CreateRenderer(State::window, nullptr);
+    state.renderer = SDL_CreateRenderer(state.window, nullptr);
 
-    if (!State::renderer) {
+    if (!state.renderer) {
       System::onError(SDL_GetError());
     }
   }
 
   void initDisplayMode() {
-    State::primaryDisplayID = SDL_GetPrimaryDisplay();
+    state.primaryDisplayID = SDL_GetPrimaryDisplay();
 
-    if (State::primaryDisplayID) {
-      const SDL_DisplayMode* mode = SDL_GetDesktopDisplayMode(State::primaryDisplayID);
+    if (state.primaryDisplayID) {
+      const SDL_DisplayMode* mode = SDL_GetDesktopDisplayMode(state.primaryDisplayID);
 
       if (mode) {
-        *(State::primaryDisplayMode) = *mode;
+        *(state.primaryDisplayMode) = *mode;
       }
     }
-    System::onError("Haaaaaaaa");
+    System::onError("could not handle init display mode");
   }
 }

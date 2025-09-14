@@ -7,15 +7,15 @@ namespace System {
   }
 
   void destroyWindow() {
-    SDL_DestroyWindow(State::window);
+    SDL_DestroyWindow(state.window);
   }
 
   void destroyRenderer() {
-    SDL_DestroyRenderer(State::renderer);
+    SDL_DestroyRenderer(state.renderer);
   }
 
   void quit() {
-    State::running = false;
+    state.running = false;
     SDL_Quit();
   }
 

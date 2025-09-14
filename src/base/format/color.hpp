@@ -1,22 +1,23 @@
+#pragma once
 #include "../base.hpp"
 
 using namespace std;
 
-typedef unsigned char uchar;
+// typedef unsigned char uchar;
 
 class Color {
 public:
-  uchar r, g, b, a;
+  Uint8 r, g, b, a;
 
-  Color(uchar r, uchar g, uchar b, uchar a);
+  Color(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
   ~Color();
 
-  Color withR(uchar v);
-  Color withG(uchar v);
-  Color withB(uchar v);
-  Color withA(uchar v);
+  Color withR(Uint8 v);
+  Color withG(Uint8 v);
+  Color withB(Uint8 v);
+  Color withA(Uint8 v);
   void set(Color c);
-  void set(uchar r, uchar g, uchar b, uchar a);
+  void set(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
   static Color random();
 };

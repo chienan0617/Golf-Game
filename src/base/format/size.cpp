@@ -5,6 +5,11 @@ Size::Size(int width, int height) {
   this->height = height;
 }
 
+Size::Size() {
+  this->width = 0;
+  this->height = 0;
+}
+
 Size Size::withWidth(int width) {
   return Size(width, 0);
 }

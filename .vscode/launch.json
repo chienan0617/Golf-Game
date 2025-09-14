@@ -14,6 +14,17 @@
       "preLaunchTask": "build SDL3",
       "MIMode": "gdb",
       "miDebuggerPath": "D:/Jimmy/msys64/ucrt64/bin/gdb.exe"
+    },
+    {
+      "name": "Run compile_and_run.py",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "Compile and Run",
+      "program": "${workspaceFolder}/build/main.exe",
+      "args": [
+        "${workspaceFolder}/script/compile_and_run.py"
+      ],
+      // "console": "integratedTerminal"
     }
   ]
 }
