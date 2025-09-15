@@ -10,5 +10,7 @@ public:
   DrawableComponent(const char* name);
 
   void initPixmap(int width, int height);
+  void initPixmap();
   void initTexture(int width, int height, SDL_PixelFormat format = SDL_PIXELFORMAT_RGBA32, SDL_TextureAccess access = SDL_TEXTUREACCESS_STATIC);
+  void initTexture();
 };

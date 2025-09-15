@@ -5,7 +5,7 @@ class GameObject {
 public:
   const char* name;
   int id;
-  bool isShown;
+  bool isShown = true;
 
   GameObject(const char* name);
 

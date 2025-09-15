@@ -28,7 +28,7 @@ public:
 
   // 渲染貼圖
   // src 和 dst 可以選擇 nullptr 表示整張
-  void render(SDL_Renderer* renderer, const SDL_FRect* dst, const SDL_FRect* src = nullptr);
+  void render(const SDL_FRect* dst, const SDL_FRect* src = nullptr);
 
   // 若需要把此 texture 當作 render target（offscreen render）
   void setAsRenderTarget(SDL_Renderer* renderer);

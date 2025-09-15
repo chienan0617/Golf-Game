@@ -66,9 +66,9 @@ void Texture::updateFromPixmap(const Pixmap& pixmap) {
   SDL_UpdateTexture(texture, nullptr, pixmap.surface->pixels, pixmap.getPitch());
 }
 
-void Texture::render(SDL_Renderer* renderer, const SDL_FRect* dst, const SDL_FRect* src) {
+void Texture::render(const SDL_FRect* dst, const SDL_FRect* src) {
   if (!texture) return;
-  SDL_RenderTexture(renderer, texture, src, dst);
+  SDL_RenderTexture(state.renderer, texture, src, dst);
 }
 
 void Texture::setAsRenderTarget(SDL_Renderer* renderer) {

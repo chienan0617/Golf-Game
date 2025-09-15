@@ -5,7 +5,9 @@
 #include "system.hpp"
 #include "event.hpp"
 #include "object/object_manager.hpp"
+#include "object/object_registry.hpp"
 #include "model/canvas.hpp"
+#include "../core/root.hpp"
 
 void Game::run() {
   Game::init();
@@ -19,6 +21,8 @@ void Game::init() {
   Init::createRenderer();
   // Init::initDisplayMode(); // ! fatal function!!!
   ObjectManager::onCreate();
+
+  ObjectRegistry::add(RootObject("New"));
 }
 
 void Game::loop() {

@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL3/SDL.h>
-#include "../base.hpp"
 #include <string>
+#include "../base.hpp"
 #include "../format/color.hpp"
 
 class Pixmap {
@@ -30,7 +30,19 @@ public:
   // 取一個像素
   void getPixel(int x, int y, Color& c) const;
 
-  SDL_Surface *getSurface();
+  // 常用繪圖操作
+  void clear(Color c);
+  void fillRect(int x, int y, int w, int h, Color c);
+  void drawLine(int x1, int y1, int x2, int y2, Color c);
+  void drawCircle(int cx, int cy, int radius, Color c);
+  void blit(Pixmap& src, int x, int y);
+
+  // 存檔
+  void saveBMP(const std::string& filename);
+  // void savePNG(const std::string& filename); // 需要 SDL_image
+
+  SDL_Surface* getSurface();
 
   SDL_Surface* surface;
+  private:
 };
