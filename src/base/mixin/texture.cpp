@@ -1,15 +1,40 @@
 #include "texture.hpp"
-#include "../state.hpp"
-#include <stdexcept>
 
-Texture::Texture(SDL_Renderer* renderer, int width, int height, SDL_PixelFormat format, SDL_TextureAccess access)
-  : texture(nullptr)
-{
-  texture = SDL_CreateTexture(renderer, format, access, width, height);
-  if (!texture) {
-    throw std::runtime_error(std::string("Failed to create SDL Texture: ") + SDL_GetError());
+Texture::Texture() {}
+
+// texture.cpp
+
+Texture::Texture(Surface* surfPtr) {
+  texture = SDL_CreateTextureFromSurface(state.renderer, surfPtr->surface);
+}
+
+Texture::Texture(Surface& surfRef) : Texture(&surfRef) { }  // delegate to pointer version
+
+Texture::Texture(const Surface& surfRef) : Texture(const_cast<Surface*>(&surfRef)) { }
+// or better, ensure surfRef.getSDL() is non-const or use mutable
+
+Texture::Texture(const std::optional<Surface>& surfOpt) {
+  if (surfOpt) {
+    texture = SDL_CreateTextureFromSurface(state.renderer, surfOpt->surface);
+    if (!texture) {
+        // error
+    }
+  } else {
+    texture = nullptr;
   }
 }
+
+Texture::Texture(const std::optional<Surface*> surfOpt) {
+  if (surfOpt && *surfOpt && (*surfOpt)->surface) {
+    texture = SDL_CreateTextureFromSurface(state.renderer, (*surfOpt)->surface);
+    if (!texture) {
+      SDL_Log("Failed to create texture: %s", SDL_GetError());
+    }
+  } else {
+    texture = nullptr;
+  }
+}
+
 
 Texture::~Texture() {
   if (texture) {
@@ -18,66 +43,7 @@ Texture::~Texture() {
   }
 }
 
-Texture::Texture(Texture&& other) noexcept
-  : texture(other.texture)
-{
-  other.texture = nullptr;
-}
 
-Texture& Texture::operator=(Texture&& other) noexcept {
-  if (this != &other) {
-    if (texture) {
-      SDL_DestroyTexture(texture);
-    }
-    texture = other.texture;
-    other.texture = nullptr;
-  }
-  return *this;
-}
-
-int Texture::getWidth() const {
-  float w = 0;
-  if (texture) {
-    SDL_GetTextureSize(texture, &w, nullptr);
-  }
-  return w;
-}
-
-int Texture::getHeight() const {
-  float h = 0;
-  if (texture) {
-    SDL_GetTextureSize(texture, nullptr, &h);
-  }
-  return h;
-}
-
-Texture Texture::fromPixmap(SDL_Renderer* renderer, const Pixmap& pixmap) {
-  SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, pixmap.surface);
-  if (!tex) {
-    throw std::runtime_error(std::string("SDL_CreateTextureFromSurface failed: ") + SDL_GetError());
-  }
-  Texture t(state.renderer, 0, 0, SDL_PIXELFORMAT_UNKNOWN, SDL_TEXTUREACCESS_STATIC);  // dummy init
-  t.texture = tex;
-  return t;
-}
-
-void Texture::updateFromPixmap(const Pixmap& pixmap) {
-  if (!texture) return;
-  SDL_UpdateTexture(texture, nullptr, pixmap.surface->pixels, pixmap.getPitch());
-}
-
-void Texture::render(const SDL_FRect* dst, const SDL_FRect* src) {
-  if (!texture) return;
-  SDL_RenderTexture(state.renderer, texture, src, dst);
-}
-
-void Texture::setAsRenderTarget(SDL_Renderer* renderer) {
-  if (!texture) return;
-  if (SDL_SetRenderTarget(renderer, texture) != 0) {
-    throw std::runtime_error(std::string("SDL_SetRenderTarget failed: ") + SDL_GetError());
-  }
-}
-
-void Texture::resetRenderTarget(SDL_Renderer* renderer) {
-  SDL_SetRenderTarget(renderer, nullptr);
-}
+// bool Texture::initTexture(int width, int height) {
+//   bool state = SDL_CreateTexture(width, height);
+// }

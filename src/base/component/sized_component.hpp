@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 #include "../object/game_object.hpp"
 #include "../format/size.hpp"

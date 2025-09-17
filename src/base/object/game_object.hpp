@@ -1,5 +1,4 @@
 #pragma once
-#include "../base.hpp"
 
 class GameObject {
 public:

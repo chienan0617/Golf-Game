@@ -1,4 +1,4 @@
-#include "../format/color.hpp"
+#include "../base.hpp"
 
 namespace Canvas {
   void renderClear();
